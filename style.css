@@ -26,9 +26,11 @@ body {
     padding: 40px 50px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    max-width: 1000px;
     width: 95%;
+    max-width: 1000px;
+    min-width: 950px; /* PC 버전과 같은 가로폭 유지 */
     text-align: center;
+    margin: 0 auto;
 }
 
 header h1 {
@@ -224,121 +226,3 @@ tr.active-row { background-color: #ffe0b2; font-weight: bold; }
     transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* 모바일 최적화 (모바일 우선 대응) */
-@media (max-width: 768px) {
-    body {
-        padding: 10px 0;
-        font-size: 1.0em;
-    }
-
-    .container {
-        padding: 15px 10px;
-        width: 100%;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-    header h1 {
-        font-size: 1.8em;
-        word-break: keep-all;
-    }
-
-    .tabs {
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-
-    .tab-btn {
-        padding: 8px 15px;
-        font-size: 1.1em;
-        flex: 1 1 auto;
-        min-width: 100px;
-    }
-
-    .problem-box {
-        padding: 15px;
-        margin-bottom: 25px;
-        border-left-width: 6px;
-    }
-
-    .problem-box p, .problem-box li {
-        font-size: 1.05em;
-        word-break: keep-all;
-        line-height: 1.4;
-    }
-
-    .stage {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        margin: 15px 0;
-    }
-
-    .person {
-        width: 95%;
-        max-width: 280px;
-        padding: 12px;
-    }
-
-    .avatar {
-        font-size: 2.0em;
-        margin-bottom: 8px;
-    }
-
-    .marble-box {
-        width: 100%;
-        height: 100px;
-        padding: 5px;
-        gap: 3px;
-    }
-
-    .marble-dot {
-        width: 12px;
-        height: 12px;
-    }
-
-    .marbles-count {
-        font-size: 1.3em;
-        padding: 6px 15px;
-        margin-top: 5px;
-    }
-
-    .step-info {
-        font-size: 1.3em;
-        min-height: auto;
-        margin-bottom: 15px;
-    }
-
-    .controls {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .btn {
-        width: 100%;
-        margin: 0;
-        font-size: 1.3em;
-        padding: 12px;
-    }
-
-    .explanation-box {
-        font-size: 1.1em;
-        padding: 12px;
-        margin-bottom: 15px;
-        word-break: keep-all;
-    }
-
-    .table-container {
-        overflow-x: auto;
-    }
-
-    table {
-        font-size: 1.1em;
-        min-width: 400px;
-    }
-
-    th, td {
-        padding: 10px;
-    }
-}
