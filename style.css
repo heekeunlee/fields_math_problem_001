@@ -23,12 +23,12 @@ body {
 
 .container {
     background: white;
-    padding: 40px 50px;
+    padding: 30px 20px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    width: 95%;
-    max-width: 1000px;
-    min-width: 950px; /* PC 버전과 같은 가로폭 유지 */
+    width: 100%;
+    max-width: 850px;
+    min-width: 850px; /* 갤럭시 S25 가로폭 최적화 */
     text-align: center;
     margin: 0 auto;
 }
@@ -116,7 +116,7 @@ header h1 {
     border-radius: 15px;
     background: #f0f4f8;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
-    width: 240px;
+    width: 220px;
     transition: transform 0.3s;
 }
 
