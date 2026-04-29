@@ -1,0 +1,173 @@
+:root {
+    --primary: #FF9F1C;
+    --secondary: #2EC4B6;
+    --bg: #FDFFFC;
+    --text: #011627;
+    --box-bg: #E71D36;
+}
+
+body {
+    font-family: 'Jua', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+}
+
+header h1 {
+    color: var(--primary);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.stage {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    position: relative;
+}
+
+.person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f0f4f8;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    width: 120px;
+    transition: transform 0.3s;
+}
+
+.person.highlight {
+    transform: scale(1.1);
+    background: #e1f5fe;
+    box-shadow: 0 0 15px var(--secondary);
+}
+
+.avatar {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.marbles {
+    font-size: 1.5em;
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(255, 159, 28, 0.4);
+}
+
+.count {
+    font-size: 1.5em;
+}
+
+.controls {
+    margin: 30px 0;
+}
+
+.step-info {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: var(--box-bg);
+    min-height: 30px;
+}
+
+.btn {
+    font-family: 'Jua', sans-serif;
+    font-size: 1.2em;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: all 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn:active {
+    transform: translateY(2px);
+}
+
+.btn.primary {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn.primary:hover {
+    background: #24a397;
+}
+
+.btn.secondary {
+    background: #ddd;
+    color: #333;
+}
+
+.btn.secondary:hover {
+    background: #ccc;
+}
+
+.btn:disabled {
+    background: #eee;
+    color: #aaa;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+th, td {
+    border: 2px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background: var(--primary);
+    color: white;
+}
+
+tr.active-row {
+    background-color: #fff3e0;
+    font-weight: bold;
+}
+
+/* Marble animation particle */
+.particle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, #ffdf00, #ffa500);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+    pointer-events: none;
+    transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
