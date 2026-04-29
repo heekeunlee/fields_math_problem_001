@@ -223,3 +223,98 @@ tr.active-row { background-color: #ffe0b2; font-weight: bold; }
     pointer-events: none;
     transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+
+/* 모바일 최적화 (모바일 우선 대응) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px 0;
+        font-size: 1.0em;
+    }
+
+    .container {
+        padding: 20px 15px;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    header h1 {
+        font-size: 2.0em;
+    }
+
+    .tab-btn {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        flex: 1;
+    }
+
+    .problem-box p, .problem-box li {
+        font-size: 1.1em;
+    }
+
+    .stage {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .person {
+        width: 90%;
+        max-width: 300px;
+        padding: 15px;
+    }
+
+    .avatar {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+
+    .marble-box {
+        width: 100%;
+        height: 120px;
+    }
+
+    .marbles-count {
+        font-size: 1.4em;
+        padding: 8px 20px;
+    }
+
+    .step-info {
+        font-size: 1.3em;
+        min-height: auto;
+        margin-bottom: 15px;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 0;
+        font-size: 1.3em;
+        padding: 12px;
+    }
+
+    .explanation-box {
+        font-size: 1.2em;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        font-size: 1.1em;
+        min-width: 400px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
