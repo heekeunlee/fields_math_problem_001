@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --primary: #FF9F1C;
     --secondary: #2EC4B6;
@@ -13,24 +17,23 @@ body {
     background-color: var(--bg);
     color: var(--text);
     margin: 0;
-    padding: 30px 0;
+    padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     font-size: 1.1em;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
 }
 
 .container {
     background: white;
-    padding: 30px 20px;
+    padding: 30px 15px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 850px;
-    min-width: 850px; /* 갤럭시 S25 가로폭 최적화 */
-    text-align: center;
+    width: 850px; /* 뷰포트 설정값과 동일하게 고정 */
     margin: 0 auto;
+    text-align: center;
 }
 
 header h1 {
