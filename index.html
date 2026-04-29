@@ -10,28 +10,25 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔮 거꾸로 푸는 마법의 구슬 문제 🔮</h1>
+            <h1>🔮 거꾸로 푸는 마법의 구슬 상자 🔮</h1>
             <p>A, B, C가 구슬을 주고 받았더니 모두 48개가 되었어요.<br>시간을 거꾸로 돌려서 처음 구슬 개수를 찾아볼까요?</p>
         </header>
 
         <div class="stage">
             <div class="person" id="person-A">
                 <div class="avatar">👦🏻 A</div>
-                <div class="marbles">
-                    <span class="count">48</span>개
-                </div>
+                <div class="marble-box" id="box-A"></div>
+                <div class="marbles-count"><span class="count">48</span>개</div>
             </div>
             <div class="person" id="person-B">
                 <div class="avatar">🧒🏻 B</div>
-                <div class="marbles">
-                    <span class="count">48</span>개
-                </div>
+                <div class="marble-box" id="box-B"></div>
+                <div class="marbles-count"><span class="count">48</span>개</div>
             </div>
             <div class="person" id="person-C">
                 <div class="avatar">👧🏻 C</div>
-                <div class="marbles">
-                    <span class="count">48</span>개
-                </div>
+                <div class="marble-box" id="box-C"></div>
+                <div class="marbles-count"><span class="count">48</span>개</div>
             </div>
         </div>
 
@@ -39,8 +36,12 @@
             <div class="step-info" id="step-info">
                 현재: 모든 과정을 마친 후 똑같이 48개씩 가짐
             </div>
-            <button id="prev-btn" class="btn primary">시간 되돌리기 ⏳ (이전 단계로)</button>
+            <button id="prev-btn" class="btn primary">시간 되돌리기 ⏳ (다음 단계)</button>
             <button id="reset-btn" class="btn secondary">처음 상태(현재)로</button>
+        </div>
+
+        <div class="explanation-box" id="explanation-box">
+            <!-- 코멘트가 들어갈 자리 -->
         </div>
 
         <div class="table-container">
