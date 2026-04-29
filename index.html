@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구슬 나누기 문제 시각화</title>
+    <title>거꾸로 푸는 마법의 구슬 상자</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
@@ -13,82 +13,105 @@
             <h1>🔮 거꾸로 푸는 마법의 구슬 상자 🔮</h1>
         </header>
 
-        <div class="problem-box">
-            <p><strong>[문제]</strong> A, B, C 세 명의 학생들이 다음과 같이 구슬을 주고 받았더니 똑같이 48개씩을 가지게 되었습니다. B는 원래 몇 개의 구슬을 가지고 있었는지 구하시오.</p>
-            <ul>
-                <li>① A는 B에게 B가 가지고 있던 구슬의 개수 만큼을 주었습니다.</li>
-                <li>② B는 C에게 C가 가지고 있던 구슬의 개수 만큼을 주었습니다.</li>
-                <li>③ C는 A에게 A가 가지고 있던 구슬의 개수 만큼을 주었습니다.</li>
-            </ul>
+        <!-- 탭 네비게이션 -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openProblem(event, 'problem1')">문제 1</button>
+            <button class="tab-btn" onclick="openProblem(event, 'problem2')">문제 2</button>
         </div>
 
-        <div class="stage">
-            <div class="person" id="person-A">
-                <div class="avatar">👦🏻 A</div>
-                <div class="marble-box" id="box-A"></div>
-                <div class="marbles-count"><span class="count">48</span>개</div>
+        <!-- 문제 1 섹션 -->
+        <div id="problem1" class="tab-content active">
+            <div class="problem-box">
+                <p><strong>[문제 1]</strong> A, B, C 세 명의 학생들이 다음과 같이 구슬을 주고 받았더니 똑같이 48개씩을 가지게 되었습니다. B는 원래 몇 개의 구슬을 가지고 있었는지 구하시오.</p>
+                <ul>
+                    <li>① A는 B에게 B가 가지고 있던 구슬의 개수 만큼을 주었습니다.</li>
+                    <li>② B는 C에게 C가 가지고 있던 구슬의 개수 만큼을 주었습니다.</li>
+                    <li>③ C는 A에게 A가 가지고 있던 구슬의 개수 만큼을 주었습니다.</li>
+                </ul>
             </div>
-            <div class="person" id="person-B">
-                <div class="avatar">🧒🏻 B</div>
-                <div class="marble-box" id="box-B"></div>
-                <div class="marbles-count"><span class="count">48</span>개</div>
+
+            <div class="stage" id="stage1">
+                <div class="person" id="p1-person-A">
+                    <div class="avatar">👦🏻 A</div>
+                    <div class="marble-box" id="p1-box-A"></div>
+                    <div class="marbles-count"><span class="count">48</span>개</div>
+                </div>
+                <div class="person" id="p1-person-B">
+                    <div class="avatar">🧒🏻 B</div>
+                    <div class="marble-box" id="p1-box-B"></div>
+                    <div class="marbles-count"><span class="count">48</span>개</div>
+                </div>
+                <div class="person" id="p1-person-C">
+                    <div class="avatar">👧🏻 C</div>
+                    <div class="marble-box" id="p1-box-C"></div>
+                    <div class="marbles-count"><span class="count">48</span>개</div>
+                </div>
             </div>
-            <div class="person" id="person-C">
-                <div class="avatar">👧🏻 C</div>
-                <div class="marble-box" id="box-C"></div>
-                <div class="marbles-count"><span class="count">48</span>개</div>
+
+            <div class="controls">
+                <div class="step-info" id="p1-step-info">현재: 모두 48개씩 가짐</div>
+                <button id="p1-prev-btn" class="btn primary">시간 되돌리기 ⏳</button>
+                <button id="p1-reset-btn" class="btn secondary">초기화</button>
+            </div>
+
+            <div class="explanation-box" id="p1-explanation-box">💡 가장 마지막 순간입니다. 거꾸로 되돌려 볼까요?</div>
+
+            <div class="table-container">
+                <table id="p1-table">
+                    <thead><tr><th>순서</th><th>A</th><th>B</th><th>C</th></tr></thead>
+                    <tbody>
+                        <tr id="p1-row-initial"><td>처음</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr id="p1-row-step1"><td>① A가 B만큼 줌</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr id="p1-row-step2"><td>② B가 C만큼 줌</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr id="p1-row-step3" class="active-row"><td>③ C가 A만큼 줌</td><td>48</td><td>48</td><td>48</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="controls">
-            <div class="step-info" id="step-info">
-                현재: 모든 과정을 마친 후 똑같이 48개씩 가짐
+        <!-- 문제 2 섹션 -->
+        <div id="problem2" class="tab-content">
+            <div class="problem-box">
+                <p><strong>[문제 2]</strong> A, B, C 세 사람이 게임을 합니다. 한 번 게임을 할 때마다 한 사람은 이기고 두 사람은 집니다. 이때 이긴 사람은 진 사람으로부터 자기가 가지고 있는 구슬의 개수 만큼 받습니다. 세 번 게임을 하였는데 A, B, C 순서대로 한 번씩 이기고 54개씩의 구슬을 갖게 되었습니다. 처음에 각각 구슬을 몇 개씩 가지고 있었을까요?</p>
             </div>
-            <button id="prev-btn" class="btn primary">시간 되돌리기 ⏳ (다음 단계)</button>
-            <button id="reset-btn" class="btn secondary">처음 상태(현재)로</button>
-        </div>
 
-        <div class="explanation-box" id="explanation-box">
-            <!-- 코멘트가 들어갈 자리 -->
-        </div>
+            <div class="stage" id="stage2">
+                <div class="person" id="p2-person-A">
+                    <div class="avatar">👦🏻 A</div>
+                    <div class="marble-box" id="p2-box-A"></div>
+                    <div class="marbles-count"><span class="count">54</span>개</div>
+                </div>
+                <div class="person" id="p2-person-B">
+                    <div class="avatar">🧒🏻 B</div>
+                    <div class="marble-box" id="p2-box-B"></div>
+                    <div class="marbles-count"><span class="count">54</span>개</div>
+                </div>
+                <div class="person" id="p2-person-C">
+                    <div class="avatar">👧🏻 C</div>
+                    <div class="marble-box" id="p2-box-C"></div>
+                    <div class="marbles-count"><span class="count">54</span>개</div>
+                </div>
+            </div>
 
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>순서</th>
-                        <th>A</th>
-                        <th>B</th>
-                        <th>C</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="row-initial">
-                        <td>처음</td>
-                        <td>?</td>
-                        <td>?</td>
-                        <td>?</td>
-                    </tr>
-                    <tr id="row-step1">
-                        <td>① A가 B에게 B만큼 줌</td>
-                        <td>?</td>
-                        <td>?</td>
-                        <td>?</td>
-                    </tr>
-                    <tr id="row-step2">
-                        <td>② B가 C에게 C만큼 줌</td>
-                        <td>?</td>
-                        <td>?</td>
-                        <td>?</td>
-                    </tr>
-                    <tr id="row-step3" class="active-row">
-                        <td>③ C가 A에게 A만큼 줌</td>
-                        <td>48</td>
-                        <td>48</td>
-                        <td>48</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="controls">
+                <div class="step-info" id="p2-step-info">현재: 모두 54개씩 가짐</div>
+                <button id="p2-prev-btn" class="btn primary">시간 되돌리기 ⏳</button>
+                <button id="p2-reset-btn" class="btn secondary">초기화</button>
+            </div>
+
+            <div class="explanation-box" id="p2-explanation-box">💡 마지막에 모두 54개씩 남았습니다. 누가 이겼었는지 거꾸로 가봅시다!</div>
+
+            <div class="table-container">
+                <table id="p2-table">
+                    <thead><tr><th>순서</th><th>A</th><th>B</th><th>C</th></tr></thead>
+                    <tbody>
+                        <tr id="p2-row-initial"><td>처음</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr id="p2-row-step1"><td>① A 승리</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr id="p2-row-step2"><td>② B 승리</td><td>?</td><td>?</td><td>?</td></tr>
+                        <tr id="p2-row-step3" class="active-row"><td>③ C 승리</td><td>54</td><td>54</td><td>54</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

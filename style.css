@@ -26,7 +26,7 @@ body {
     padding: 40px 50px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    max-width: 950px;
+    max-width: 1000px;
     width: 95%;
     text-align: center;
 }
@@ -34,13 +34,40 @@ body {
 header h1 {
     color: var(--primary);
     font-size: 2.8em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-header p {
+/* 탭 스타일 */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tab-btn {
+    font-family: 'Jua', sans-serif;
     font-size: 1.4em;
-    color: #555;
-    line-height: 1.5;
+    padding: 10px 40px;
+    border: 3px solid var(--primary);
+    background: white;
+    color: var(--primary);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 .problem-box {
@@ -102,7 +129,6 @@ header p {
     margin-bottom: 15px;
 }
 
-/* 상자 시각화 */
 .marble-box {
     width: 200px;
     height: 160px;
@@ -118,7 +144,6 @@ header p {
     gap: 4px;
     margin-bottom: 20px;
     position: relative;
-    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.05);
 }
 
 .marble-dot {
@@ -136,16 +161,9 @@ header p {
     padding: 10px 30px;
     border-radius: 30px;
     font-weight: bold;
-    box-shadow: 0 5px 15px rgba(255, 159, 28, 0.4);
 }
 
-.count {
-    font-size: 1.3em;
-}
-
-.controls {
-    margin: 30px 0;
-}
+.controls { margin: 30px 0; }
 
 .step-info {
     font-size: 1.7em;
@@ -164,40 +182,12 @@ header p {
     cursor: pointer;
     margin: 0 10px;
     transition: all 0.2s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.btn:active {
-    transform: translateY(2px);
-}
+.btn.primary { background: var(--secondary); color: white; }
+.btn.secondary { background: #ddd; color: #333; }
+.btn:disabled { background: #eee; color: #aaa; cursor: not-allowed; }
 
-.btn.primary {
-    background: var(--secondary);
-    color: white;
-}
-
-.btn.primary:hover {
-    background: #24a397;
-}
-
-.btn.secondary {
-    background: #ddd;
-    color: #333;
-}
-
-.btn.secondary:hover {
-    background: #ccc;
-}
-
-.btn:disabled {
-    background: #eee;
-    color: #aaa;
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
-
-/* 핵심 풀이 코멘트 박스 */
 .explanation-box {
     background: #fff9c4;
     border: 3px dashed #fbc02d;
@@ -218,23 +208,10 @@ table {
     font-size: 1.4em;
 }
 
-th, td {
-    border: 2px solid #ddd;
-    padding: 15px;
-    text-align: center;
-}
+th, td { border: 2px solid #ddd; padding: 15px; text-align: center; }
+th { background: var(--primary); color: white; }
+tr.active-row { background-color: #ffe0b2; font-weight: bold; }
 
-th {
-    background: var(--primary);
-    color: white;
-}
-
-tr.active-row {
-    background-color: #ffe0b2;
-    font-weight: bold;
-}
-
-/* 움직이는 구슬 (애니메이션용) */
 .moving-marble {
     position: fixed;
     width: 16px;
@@ -244,5 +221,5 @@ tr.active-row {
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     z-index: 100;
     pointer-events: none;
-    transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
