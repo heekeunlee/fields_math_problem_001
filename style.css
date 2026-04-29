@@ -43,6 +43,35 @@ header p {
     line-height: 1.5;
 }
 
+.problem-box {
+    background-color: #f8f9fa;
+    border-left: 10px solid var(--primary);
+    padding: 20px 30px;
+    margin: 20px 0 40px 0;
+    text-align: left;
+    border-radius: 0 15px 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.problem-box p {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.problem-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.problem-box li {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    color: #555;
+}
+
 .stage {
     display: flex;
     justify-content: space-around;
