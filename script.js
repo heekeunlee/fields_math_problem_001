@@ -536,6 +536,90 @@ class Problem6 {
     }
 }
 
+// 문제 7 로직 (A, B, C 게임 - 2배 주기 버전)
+class Problem7 {
+    constructor() {
+        this.currentStep = 0;
+        this.steps = [
+            {
+                desc: "현재: 모두 27개씩 가짐",
+                explanation: "💡 마지막에 모두 27개씩 가졌습니다. 마지막에 C가 져서 이렇게 된 거예요. 시간을 돌려볼까요?",
+                counts: { A: 27, B: 27, C: 27 },
+                activeRow: "p7-row-step3",
+                action: null
+            },
+            {
+                desc: "③ 취소: C 패배 취소",
+                explanation: "💡 C는 패배하여 A와 B에게 각각 '그들이 가진 것의 2배'를 주었습니다.\n즉, A와 B는 3배가 되어 27개가 된 것이니 원래 9개씩 있었습니다.\nC는 A와 B에게 각각 18개씩 돌려받습니다.",
+                counts: { A: 9, B: 9, C: 63 },
+                activeRow: "p7-row-step2",
+                action: { from: ['A', 'B'], to: 'C', amount: 18 }
+            },
+            {
+                desc: "② 취소: B 패배 취소",
+                explanation: "💡 B는 패배하여 A와 C에게 각각 '그들이 가진 것의 2배'를 주어 그들이 3배가 되었습니다.\nA는 9 / 3 = 3개, C는 63 / 3 = 21개였습니다.\nB는 A에게 6개, C에게 42개를 돌려받습니다.",
+                counts: { A: 3, B: 57, C: 21 },
+                activeRow: "p7-row-step1",
+                action: { from: ['A', 'C'], to: 'B', amounts: { A: 6, C: 42 } }
+            },
+            {
+                desc: "① 취소: A 패배 취소 (처음 상태)",
+                explanation: "💡 A는 패배하여 B와 C에게 각각 '그들이 가진 것의 2배'를 주어 그들이 3배가 되었습니다.\nB는 57 / 3 = 19개, C는 21 / 3 = 7개였습니다.\nA는 B에게 38개, C에게 14개를 돌려받습니다.\n\n🎉 정답: A=55, B=19, C=7!",
+                counts: { A: 55, B: 19, C: 7 },
+                activeRow: "p7-row-initial",
+                action: { from: ['B', 'C'], to: 'A', amounts: { B: 38, C: 14 } }
+            }
+        ];
+        this.init();
+    }
+    init() {
+        document.getElementById('p7-prev-btn').onclick = () => this.nextStep();
+        document.getElementById('p7-reset-btn').onclick = () => this.reset();
+        this.updateUI();
+    }
+    updateUI() {
+        const step = this.steps[this.currentStep];
+        const ids = Object.keys(step.counts);
+        ids.forEach(id => {
+            document.querySelector(`#p7-person-${id} .count`).innerText = step.counts[id];
+            renderMarbles(document.getElementById(`p7-box-${id}`), step.counts[id]);
+        });
+        document.getElementById('p7-step-info').innerText = step.desc;
+        document.getElementById('p7-explanation-box').innerText = step.explanation;
+        document.querySelectorAll('#p7-table tr').forEach(tr => tr.classList.remove('active-row'));
+        document.getElementById(step.activeRow).classList.add('active-row');
+        const row = document.getElementById(step.activeRow);
+        const cells = row.querySelectorAll('td');
+        ids.forEach((id, idx) => cells[idx+1].innerText = step.counts[id]);
+        document.getElementById('p7-prev-btn').disabled = (this.currentStep === this.steps.length - 1);
+    }
+    nextStep() {
+        if(this.currentStep < this.steps.length - 1) {
+            this.currentStep++;
+            const action = this.steps[this.currentStep].action;
+            if(action) {
+                let froms = Array.isArray(action.from) ? action.from : [action.from];
+                let completedCount = 0;
+                froms.forEach(from => {
+                    const amount = action.amounts ? action.amounts[from] : action.amount;
+                    animateMarblesTransfer(from, action.to, amount, 'p7', () => {
+                        completedCount++;
+                        if(completedCount === froms.length) this.updateUI();
+                    });
+                });
+            } else this.updateUI();
+        }
+    }
+    reset() {
+        this.currentStep = 0;
+        ['p7-row-initial', 'p7-row-step1', 'p7-row-step2'].forEach(id => {
+            const cells = document.getElementById(id).querySelectorAll('td');
+            for(let i=1; i<cells.length; i++) cells[i].innerText = '?';
+        });
+        this.updateUI();
+    }
+}
+
 // 앱 실행
 window.onload = () => {
     new Problem1();
@@ -544,4 +628,5 @@ window.onload = () => {
     new Problem4();
     new Problem5();
     new Problem6();
+    new Problem7();
 };

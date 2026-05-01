@@ -23,6 +23,8 @@
             <button class="tab-btn" onclick="openProblem(event, 'problem4')">문제 4</button>
             <button class="tab-btn" onclick="openProblem(event, 'problem5')">문제 5</button>
             <button class="tab-btn" onclick="openProblem(event, 'problem6')">문제 6</button>
+            <button class="tab-btn" onclick="openProblem(event, 'problem7')">문제 7</button>
+            <button class="tab-btn" onclick="openProblem(event, 'problem8')">문제 8</button>
         </div>
 
         <!-- 문제 1 섹션 -->
@@ -434,8 +436,91 @@
             </div>
         </div>
 
+        <!-- 문제 7 섹션 (새로 주신 11번: 구슬 2배 주기 게임) -->
+        <div id="problem7" class="tab-content">
+            <div class="problem-box">
+                <p><strong>[문제 7]</strong> A, B, C 세 사람이 게임을 하는데 한 사람은 지고 두 사람은 이깁니다. 진 사람은 이긴 두 사람에게 그 사람들이 가진 구슬의 2배를 줍니다. 세 번 게임을 하였는데 A, B, C 순서대로 모두 한 번씩 졌고, 똑같이 27개를 가지게 되었습니다. 처음 세 사람은 각각 몇 개씩의 구슬을 가지고 있었는지 구하시오.</p>
+            </div>
+
+            <div class="stage" id="stage7">
+                <div class="person" id="p7-person-A">
+                    <div class="avatar">👦🏻 A</div>
+                    <div class="marble-box" id="p7-box-A"></div>
+                    <div class="marbles-count"><span class="count">27</span>개</div>
+                </div>
+                <div class="person" id="p7-person-B">
+                    <div class="avatar">🧒🏻 B</div>
+                    <div class="marble-box" id="p7-box-B"></div>
+                    <div class="marbles-count"><span class="count">27</span>개</div>
+                </div>
+                <div class="person" id="p7-person-C">
+                    <div class="avatar">👧🏻 C</div>
+                    <div class="marble-box" id="p7-box-C"></div>
+                    <div class="marbles-count"><span class="count">27</span>개</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="step-info" id="p7-step-info">현재: 모두 27개씩 가짐</div>
+                <button id="p7-prev-btn" class="btn primary">시간 되돌리기 ⏳</button>
+                <button id="p7-reset-btn" class="btn secondary">초기화</button>
+            </div>
+
+            <div class="explanation-box" id="p7-explanation-box">💡 마지막에 모두 27개씩 되었습니다. 이번에는 진 사람이 이긴 사람들에게 '가지고 있는 것의 2배'를 주었으니, 이긴 사람들은 3배가 된 거예요!</div>
+
+            <div class="table-container">
+                <table id="p7-table">
+                    <thead>
+                        <tr>
+                            <th>순서</th>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="p7-row-initial">
+                            <td>처음</td>
+                            <td>?</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr id="p7-row-step1">
+                            <td>① A 패배</td>
+                            <td>?</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr id="p7-row-step2">
+                            <td>② B 패배</td>
+                            <td>?</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr id="p7-row-step3" class="active-row">
+                            <td>③ C 패배</td>
+                            <td>27</td>
+                            <td>27</td>
+                            <td>27</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 문제 8 섹션 (대기 중) -->
+        <div id="problem8" class="tab-content">
+            <div class="problem-box">
+                <p><strong>[문제 8]</strong> 추가 문제를 기다리고 있습니다. 이미지를 올려주시면 바로 업데이트 해드릴게요! 😊</p>
+            </div>
+            <div style="height: 300px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; color: #aaa;">
+                📷 다음 문제 이미지를 올려주세요!
+            </div>
+        </div>
+
     </div>
     <script src="script.js"></script>
+
 </body>
 
 </html>
