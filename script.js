@@ -620,6 +620,82 @@ class Problem7 {
     }
 }
 
+// 문제 8 로직 (찬호와 민준이 게임 - 2인 게임)
+class Problem8 {
+    constructor() {
+        this.currentStep = 0;
+        this.steps = [
+            {
+                desc: "현재: 둘 다 24개씩 가짐",
+                explanation: "💡 마지막에 둘 다 24개씩 가졌습니다. 마지막(③)에 찬호가 져서 이렇게 된 거예요. 시간을 돌려볼까요?",
+                counts: { Chanho: 24, Minjun: 24 },
+                activeRow: "p8-row-step3",
+                action: null
+            },
+            {
+                desc: "③ 취소: 찬호 패배 취소",
+                explanation: "💡 찬호가 민준이에게 민준이가 가진 만큼 주어서 민준이가 24개가 된 것이니 원래 민준이는 12개였습니다.\n찬호는 민준이에게 12개를 돌려받습니다.",
+                counts: { Chanho: 36, Minjun: 12 },
+                activeRow: "p8-row-step2",
+                action: { from: 'Minjun', to: 'Chanho', amount: 12 }
+            },
+            {
+                desc: "② 취소: 민준 패배 취소",
+                explanation: "💡 민준이가 찬호에게 찬호가 가진 만큼 주어서 찬호가 36개가 된 것이니 원래 찬호는 18개였습니다.\n민준이는 찬호에게 18개를 돌려받습니다.",
+                counts: { Chanho: 18, Minjun: 30 },
+                activeRow: "p8-row-step1",
+                action: { from: 'Chanho', to: 'Minjun', amount: 18 }
+            },
+            {
+                desc: "① 취소: 찬호 패배 취소 (처음 상태)",
+                explanation: "💡 찬호가 민준이에게 민준이가 가진 만큼 주어서 민준이가 30개가 된 것이니 원래 민준이는 15개였습니다.\n찬호는 민준이에게 15개를 돌려받습니다.\n\n🎉 정답: 찬호=33개, 민준=15개!",
+                counts: { Chanho: 33, Minjun: 15 },
+                activeRow: "p8-row-initial",
+                action: { from: 'Minjun', to: 'Chanho', amount: 15 }
+            }
+        ];
+        this.init();
+    }
+    init() {
+        document.getElementById('p8-prev-btn').onclick = () => this.nextStep();
+        document.getElementById('p8-reset-btn').onclick = () => this.reset();
+        this.updateUI();
+    }
+    updateUI() {
+        const step = this.steps[this.currentStep];
+        const ids = Object.keys(step.counts);
+        ids.forEach(id => {
+            document.querySelector(`#p8-person-${id} .count`).innerText = step.counts[id];
+            renderMarbles(document.getElementById(`p8-box-${id}`), step.counts[id]);
+        });
+        document.getElementById('p8-step-info').innerText = step.desc;
+        document.getElementById('p8-explanation-box').innerText = step.explanation;
+        document.querySelectorAll('#p8-table tr').forEach(tr => tr.classList.remove('active-row'));
+        document.getElementById(step.activeRow).classList.add('active-row');
+        const row = document.getElementById(step.activeRow);
+        const cells = row.querySelectorAll('td');
+        ids.forEach((id, idx) => cells[idx+1].innerText = step.counts[id]);
+        document.getElementById('p8-prev-btn').disabled = (this.currentStep === this.steps.length - 1);
+    }
+    nextStep() {
+        if(this.currentStep < this.steps.length - 1) {
+            this.currentStep++;
+            const action = this.steps[this.currentStep].action;
+            if(action) {
+                animateMarblesTransfer(action.from, action.to, action.amount, 'p8', () => this.updateUI());
+            } else this.updateUI();
+        }
+    }
+    reset() {
+        this.currentStep = 0;
+        ['p8-row-initial', 'p8-row-step1', 'p8-row-step2'].forEach(id => {
+            const cells = document.getElementById(id).querySelectorAll('td');
+            for(let i=1; i<cells.length; i++) cells[i].innerText = '?';
+        });
+        this.updateUI();
+    }
+}
+
 // 앱 실행
 window.onload = () => {
     new Problem1();
@@ -629,4 +705,5 @@ window.onload = () => {
     new Problem5();
     new Problem6();
     new Problem7();
+    new Problem8();
 };

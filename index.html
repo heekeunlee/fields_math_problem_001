@@ -508,13 +508,65 @@
             </div>
         </div>
 
-        <!-- 문제 8 섹션 (대기 중) -->
+        <!-- 문제 8 섹션 (찬호와 민준이 게임) -->
         <div id="problem8" class="tab-content">
             <div class="problem-box">
-                <p><strong>[문제 8]</strong> 추가 문제를 기다리고 있습니다. 이미지를 올려주시면 바로 업데이트 해드릴게요! 😊</p>
+                <p><strong>[문제 8]</strong> 찬호와 민준이가 게임을 합니다. 진 사람은 이긴 사람에게 이긴 사람이 갖고 있는 칩의 수만큼 칩을 주기로 했습니다. 게임을 세 번 하였더니 찬호, 민준, 찬호 순서대로 져서 칩이 똑같이 24개가 되었습니다. 게임을 시작하기 전 찬호는 몇 개의 칩을 가지고 있었는지 구하시오.</p>
             </div>
-            <div style="height: 300px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; color: #aaa;">
-                📷 다음 문제 이미지를 올려주세요!
+
+            <div class="stage" id="stage8">
+                <div class="person" id="p8-person-Chanho">
+                    <div class="avatar">👦🏻 찬호</div>
+                    <div class="marble-box" id="p8-box-Chanho"></div>
+                    <div class="marbles-count"><span class="count">24</span>개</div>
+                </div>
+                <div class="person" id="p8-person-Minjun">
+                    <div class="avatar">🧒🏻 민준</div>
+                    <div class="marble-box" id="p8-box-Minjun"></div>
+                    <div class="marbles-count"><span class="count">24</span>개</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="step-info" id="p8-step-info">현재: 둘 다 24개씩 가짐</div>
+                <button id="p8-prev-btn" class="btn primary">시간 되돌리기 ⏳</button>
+                <button id="p8-reset-btn" class="btn secondary">초기화</button>
+            </div>
+
+            <div class="explanation-box" id="p8-explanation-box">💡 마지막에 똑같이 24개가 되었습니다. 찬호, 민준, 찬호 순서대로 졌으니 시간을 거꾸로 돌려볼까요?</div>
+
+            <div class="table-container">
+                <table id="p8-table">
+                    <thead>
+                        <tr>
+                            <th>순서</th>
+                            <th>찬호</th>
+                            <th>민준</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="p8-row-initial">
+                            <td>처음</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr id="p8-row-step1">
+                            <td>① 찬호 패배</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr id="p8-row-step2">
+                            <td>② 민준 패배</td>
+                            <td>?</td>
+                            <td>?</td>
+                        </tr>
+                        <tr id="p8-row-step3" class="active-row">
+                            <td>③ 찬호 패배</td>
+                            <td>24</td>
+                            <td>24</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
